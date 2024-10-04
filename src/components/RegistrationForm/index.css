@@ -1,125 +1,125 @@
 /* Write your CSS code here */
-.app-container{
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-.form{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 10px;
-    width: 300px;
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
+  width: 300px;
 }
-.heading{
-    font-size: 36px;
-    color: #ea580c;
-    font-family: 'roboto';
-    font-weight: bold;
+.heading {
+  font-size: 36px;
+  color: #ea580c;
+  font-family: 'roboto';
+  font-weight: bold;
 }
-.label{
-    font-size: 12px;
-    color: #475569;
-    font-family: 'roboto';
-    font-weight: bold;
-    margin: 20px 0 4px 0;
+.label {
+  font-size: 12px;
+  color: #475569;
+  font-family: 'roboto';
+  font-weight: bold;
+  margin: 20px 0 4px 0;
 }
-.input{
-    width: 100%;
-    height: 35px;
-    border-radius: 3px;
-    padding: 0 8px;
-    font-size: 12px;
-    color: #475569;
-    font-family: 'roboto';
-    cursor: pointer;
+.input {
+  width: 100%;
+  height: 35px;
+  border-radius: 3px;
+  padding: 0 8px;
+  font-size: 12px;
+  color: #475569;
+  font-family: 'roboto';
+  cursor: pointer;
 }
 .no-error-input {
-    background-color: transparent;
-    border: 1px solid #cbd2d9;
-    outline: none;
+  background-color: transparent;
+  border: 1px solid #cbd2d9;
+  outline: none;
 }
 .error-input {
-    background-color: #fef2f4;
-    border: 1px solid #ff0b37;
-    outline: 1px solid #ff0b37;
+  background-color: #fef2f4;
+  border: 1px solid #ff0b37;
+  outline: 1px solid #ff0b37;
 }
-.error{
-    line-height: 1px;
-    font-size: 12px;
-    color: #ff0b37;
-    font-family: 'roboto';
+.error {
+  line-height: 1px;
+  font-size: 12px;
+  color: #ff0b37;
+  font-family: 'roboto';
 }
 .input::placeholder {
-    font-size: 12px;
-    color: #9aa5b1;
-    font-family: 'roboto';
+  font-size: 12px;
+  color: #9aa5b1;
+  font-family: 'roboto';
 }
 .submit-btn {
-    align-self: center;
-    margin: 20px 0 5px 0;
-    background-color: #ea580c;
-    border: none;
-    outline: none;
-    padding: 7px 22px;
-    font-size: 14px;
-    color: #ffffff;
-    font-family: 'roboto';
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.5s ease;
+  align-self: center;
+  margin: 20px 0 5px 0;
+  background-color: #ea580c;
+  border: none;
+  outline: none;
+  padding: 7px 22px;
+  font-size: 14px;
+  color: #ffffff;
+  font-family: 'roboto';
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.5s ease;
 }
 .submit-btn:hover {
-    padding: 7px 25px;
+  padding: 7px 25px;
 }
 .register-successfully-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-    width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  width: 300px;
 }
 .success-icon {
-    width: 80px;
-    height: 80px;
+  width: 80px;
+  height: 80px;
 }
 .success-description {
-    font-size: 16px;
-    color: #475569;
-    font-family: 'roboto';
-    font-weight: bold;
+  font-size: 16px;
+  color: #475569;
+  font-family: 'roboto';
+  font-weight: bold;
 }
-@media screen and (min-width:768px){
-    .form {
-        width: 400px;
-        background-color: #ffffff;
-        box-shadow: 0px 4px 16px 0px #bfbfbf;
-        border-radius: 10px;
-        padding: 40px;
-    }
-    .heading {
-        font-size: 46px;
-    }
-    .label {
-        font-size: 14px;
-    }
-    .input {
-        font-size: 14px;
-    }
-    .input::placeholder {
-        font-size: 14px;
-    }
-    .submit-btn {
-        font-size: 16px;
-    }
-    .register-successfully-section {
-        width: 400px;
-        background-color: #ffffff;
-        box-shadow: 0px 4px 16px 0px #bfbfbf;
-        border-radius: 10px;
-        padding: 40px;
-    }
+@media screen and (min-width: 768px) {
+  .form {
+    width: 400px;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 16px 0px #bfbfbf;
+    border-radius: 10px;
+    padding: 40px;
+  }
+  .heading {
+    font-size: 46px;
+  }
+  .label {
+    font-size: 14px;
+  }
+  .input {
+    font-size: 14px;
+  }
+  .input::placeholder {
+    font-size: 14px;
+  }
+  .submit-btn {
+    font-size: 16px;
+  }
+  .register-successfully-section {
+    width: 400px;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 16px 0px #bfbfbf;
+    border-radius: 10px;
+    padding: 40px;
+  }
 }
