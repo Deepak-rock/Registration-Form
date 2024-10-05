@@ -1,4 +1,4 @@
-// Write your JS code here
+/* Write your JS code here */
 import {Component} from 'react'
 import './index.css'
 
@@ -11,27 +11,81 @@ class RegistrationForm extends Component {
     isFormSubmitted: false,
   }
 
-  onChangeLastName = event => {
-    this.setState({lastNameInput: event.target.value})
-  }
-
-  onChangeFirstName = event => {
-    this.setState({firstNameInput: event.target.value})
-  }
-
   onBlurLastName = () => {
     const isValidLastName = this.validateLastName()
     this.setState({showLastNameError: !isValidLastName})
   }
 
-  validateLastName = () => {
-    const {lastNameInput} = this.state
-    return lastNameInput !== ''
+  onChangeLastName = event => {
+    const {target} = event
+    const {value} = target
+    this.setState({
+      lastNameInput: value,
+    })
+  }
+
+  renderLastNameField = () => {
+    const {lastNameInput, showLastNameError} = this.state
+    const className = showLastNameError
+      ? 'name-input-field error-field'
+      : 'name-input-field'
+    return (
+      <div className="input-container">
+        <label className="input-label" htmlFor="lastName">
+          LAST NAME
+        </label>
+        <input
+          type="text"
+          id="lastName"
+          className={className}
+          value={lastNameInput}
+          placeholder="Last name"
+          onChange={this.onChangeLastName}
+          onBlur={this.onBlurLastName}
+        />
+      </div>
+    )
   }
 
   onBlurFirstName = () => {
     const isValidFirstName = this.validateFirstName()
     this.setState({showFirstNameError: !isValidFirstName})
+  }
+
+  onChangeFirstName = event => {
+    const {target} = event
+    const {value} = target
+    this.setState({
+      firstNameInput: value,
+    })
+  }
+
+  renderFirstNameField = () => {
+    const {firstNameInput, showFirstNameError} = this.state
+    const className = showFirstNameError
+      ? 'name-input-field error-field'
+      : 'name-input-field'
+    return (
+      <div className="input-container">
+        <label className="input-label" htmlFor="firstName">
+          FIRST NAME
+        </label>
+        <input
+          type="text"
+          id="firstName"
+          className={className}
+          value={firstNameInput}
+          placeholder="First name"
+          onChange={this.onChangeFirstName}
+          onBlur={this.onBlurFirstName}
+        />
+      </div>
+    )
+  }
+
+  validateLastName = () => {
+    const {lastNameInput} = this.state
+    return lastNameInput !== ''
   }
 
   validateFirstName = () => {
@@ -43,7 +97,6 @@ class RegistrationForm extends Component {
     event.preventDefault()
     const isValidFirstName = this.validateFirstName()
     const isValidLastName = this.validateLastName()
-
     if (isValidFirstName && isValidLastName) {
       this.setState({isFormSubmitted: true})
     } else {
@@ -55,99 +108,58 @@ class RegistrationForm extends Component {
     }
   }
 
-  submitAnotherResponse = () => {
-    this.setState(prevState => ({
-      firstNameInput: '',
-      lastNameInput: '',
-      isFormSubmitted: !prevState.isFormSubmitted,
-    }))
-  }
-
-  renderFirstNameInput = () => {
-    const {firstNameInput, showFirstNameError} = this.state
-    const firstNameClassName = showFirstNameError
-      ? 'error-input'
-      : 'no-error-input'
-    return (
-      <>
-        <label className="label" htmlFor="firstName">
-          FIRST NAME
-        </label>
-        <input
-          type="text"
-          placeholder="First name"
-          id="firstName"
-          className={`input ${firstNameClassName}`}
-          value={firstNameInput}
-          onChange={this.onChangeFirstName}
-          onBlur={this.onBlurFirstName}
-        />
-      </>
-    )
-  }
-
-  renderLastNameInput = () => {
-    const {lastNameInput, showLastNameError} = this.state
-    const lastNameClassName = showLastNameError
-      ? 'error-input'
-      : 'no-error-input'
-    return (
-      <>
-        <label className="label" htmlFor="firstName">
-          LAST NAME
-        </label>
-        <input
-          type="text"
-          placeholder="Last name"
-          id="lastName"
-          className={`input ${lastNameClassName}`}
-          value={lastNameInput}
-          onChange={this.onChangeLastName}
-          onBlur={this.onBlurLastName}
-        />
-      </>
-    )
-  }
-
-  renderForm = () => {
+  renderRegistrationForm = () => {
     const {showFirstNameError, showLastNameError} = this.state
     return (
-      <form className="form" onSubmit={this.onSubmitForm}>
-        {this.renderFirstNameInput()}
-        {showFirstNameError && <p className="error">Required</p>}
-        {this.renderLastNameInput()}
-        {showLastNameError && <p className="error">Required</p>}
-        <button className="submit-btn" type="submit">
+      <form className="form-container" onSubmit={this.onSubmitForm}>
+        {this.renderFirstNameField()}
+        {showFirstNameError && <p className="error-message">Required</p>}
+        {this.renderLastNameField()}
+        {showLastNameError && <p className="error-message">Required</p>}
+        <button type="submit" className="submit-button">
           Submit
         </button>
       </form>
     )
   }
 
-  renderSuccessfully = () => (
-    <div className="register-successfully-section">
+  onClickSubmitAnotherResponse = () => {
+    this.setState(prevState => ({
+      isFormSubmitted: !prevState.isFormSubmitted,
+      firstNameInput: '',
+      lastNameInput: '',
+    }))
+  }
+
+  renderSubmissionSuccessView = () => (
+    <>
       <img
         src="https://assets.ccbp.in/frontend/react-js/success-icon-img.png"
         alt="success"
-        className="success-icon"
+        className="success-image"
       />
-      <p className="success-description">Submitted Successfully</p>
+      <p>Submitted Successfully</p>
       <button
-        className="submit-btn"
         type="button"
-        onClick={this.submitAnotherResponse}
+        className="submit-button"
+        onClick={this.onClickSubmitAnotherResponse}
       >
         Submit Another Response
       </button>
-    </div>
+    </>
   )
 
   render() {
     const {isFormSubmitted} = this.state
+
     return (
-      <div className="app-container">
-        <h1 className="heading">Registration</h1>
-        {isFormSubmitted ? this.renderSuccessfully() : this.renderForm()}
+      <div className="registration-form-container">
+        <h1 className="form-title">Registration</h1>
+        <div className="view-container">
+          {isFormSubmitted
+            ? this.renderSubmissionSuccessView()
+            : this.renderRegistrationForm()}
+        </div>
       </div>
     )
   }
